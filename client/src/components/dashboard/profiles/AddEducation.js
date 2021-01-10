@@ -74,7 +74,7 @@ const AddEducation = props => {
                             touched={i.config.touched}
                             elementType={i.config.elementType}
                             elementConfig={i.config.elementConfig}
-                            changed={() => onChangeHandler(e, i.id, i.config.validation)}
+                            changed={e => onChangeHandler(e, i.id, i.config.validation)}
                             value={i.config.value}
                             info={i.config.info}
                             icon={i.config.icon}
