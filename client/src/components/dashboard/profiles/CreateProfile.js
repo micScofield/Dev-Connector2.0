@@ -30,8 +30,8 @@ const CreateProfile = props => {
     //cant do optional stuff inside hook because we are not managing the field via state. 
     //we have custom dynamic JS object field for each input field, manage state here itself for optional cases.
 
-    const createProfileHandler = () => {
-        event.preventDefault();
+    const createProfileHandler = e => {
+        e.preventDefault();
 
         //converting formData to the form we expect at the backend {status: '', company: '', ...}
         let userFormData = {}
@@ -69,7 +69,7 @@ const CreateProfile = props => {
                             touched={i.config.touched}
                             elementType={i.config.elementType}
                             elementConfig={i.config.elementConfig}
-                            changed={onChangeHandler.bind(this, i.id, i.config.validation)}
+                            changed={e => onChangeHandler(e, i.id, i.config.validation)}
                             value={i.config.value}
                             info={i.config.info}
                             icon={i.config.icon}

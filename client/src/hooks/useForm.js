@@ -124,15 +124,15 @@ const useForm = props => {
         formArray.push(formData[key])
     }
 
-    const onChangeHandler = (identifier, rules) => {
+    const onChangeHandler = (e, identifier, rules) => {
 
         const copiedForm = { ...formData }
         const index = formArray.findIndex(i => i.id === identifier)
 
         const updatedFormData = { ...copiedForm[index] }
 
-        updatedFormData.config.value = event.target.value
-        updatedFormData.config.valid = checkValidity(event.target.value, rules)
+        updatedFormData.config.value = e.target.value
+        updatedFormData.config.valid = checkValidity(e.target.value, rules)
         updatedFormData.config.touched = true
 
         //setting values differently for checkboxes- using the checked field

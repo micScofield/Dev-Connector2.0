@@ -48,8 +48,8 @@ const EditProfile = ({ history, loading, createProfile, profile, alertMsg, curre
         }
     }, [])
 
-    const editProfileHandler = () => {
-        event.preventDefault();
+    const editProfileHandler = e => {
+        e.preventDefault();
 
         //converting formData to the form we expect at the backend {status: '', company: '', ...}
         let userFormData = {}
@@ -87,7 +87,7 @@ const EditProfile = ({ history, loading, createProfile, profile, alertMsg, curre
                             touched={i.config.touched}
                             elementType={i.config.elementType}
                             elementConfig={i.config.elementConfig}
-                            changed={onChangeHandler.bind(this, i.id, i.config.validation)}
+                            changed={e => onChangeHandler(e, i.id, i.config.validation)}
                             value={i.config.value}
                             info={i.config.info}
                             icon={i.config.icon}

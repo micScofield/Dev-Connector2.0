@@ -42,13 +42,13 @@ const Login = props => {
 
     const [isFormValid, setIsFormValid] = useState(false)
 
-    const onChangeHandler = (identifier, rules) => {
+    const onChangeHandler = (e, identifier, rules) => {
         const updatedFormData = { ...formData }
         const updatedFormDataDeep = { ...updatedFormData[identifier] }
 
         //set values
-        updatedFormDataDeep.value = event.target.value
-        updatedFormDataDeep.valid = CheckValidity(event.target.value, rules)
+        updatedFormDataDeep.value = e.target.value
+        updatedFormDataDeep.valid = CheckValidity(e.target.value, rules)
         updatedFormDataDeep.touched = true
 
         updatedFormData[identifier] = updatedFormDataDeep
@@ -61,8 +61,8 @@ const Login = props => {
         setFormData(updatedFormData)
     }
 
-    const loginHandler = () => {
-        // event.preventDefault();
+    const loginHandler = e => {
+        e.preventDefault();
         props.LOGIN(formData.email.value, formData.password.value)
     }
 
@@ -91,7 +91,7 @@ const Login = props => {
                             touched={i.config.touched}
                             elementType={i.config.elementType}
                             elementConfig={i.config.elementConfig}
-                            changed={onChangeHandler.bind(this, i.id, i.config.validation)}
+                            changed={e => onChangeHandler(e, i.id, i.config.validation)}
                             value={i.config.value} />
                     )
                 })
