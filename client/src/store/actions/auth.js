@@ -38,6 +38,7 @@ export const auth = (name, email, password) => async dispatch => {
         )
         localStorage.setItem('token', res.data.token)
         dispatch(authSuccess())
+        dispatch(loadUser())
     } catch (error) {
         dispatch(authFailure())
         dispatch(setAlert('danger', error.response.data.msg))
