@@ -1,0 +1,49 @@
+.form-group {
+  margin: 1rem 0;
+  outline: none;
+}
+
+.input {
+  font-size: large;
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+
+.input:focus {
+  background-color: #ccc;
+  outline: none;
+}
+
+.invalid {
+  border: 1px solid red;
+}
+.invalid:focus {
+  background-color: rgb(199, 147, 141);
+}
+
+.social-input {
+  display: flex;
+}
+
+.social-input i {
+  padding: 0.5rem;
+  width: 4rem;
+}
+
+.social-input i.fa-twitter {
+  color: #38a1f3;
+}
+.social-input i.fa-facebook {
+  color: #3b5998;
+}
+.social-input i.fa-instagram {
+  color: #3f729b;
+}
+.social-input i.fa-youtube {
+  color: #c4302b;
+}
+.social-input i.fa-linkedin {
+  color: #0077b5;
+}
