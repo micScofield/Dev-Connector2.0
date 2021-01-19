@@ -1,6 +1,0 @@
-{
-    "mongoURI": "mongodb+srv://sj:sj@cluster0.uwiom.mongodb.net/Brad?retryWrites=true&w=majority",
-    "jwt_secret_key": "My_Secret_Key",
-    "githubClientId": "918947d70dba1b4a3666",
-    "githubSecret": "a23329955cf95e4123b2c96d59b441155092155f "
-}
