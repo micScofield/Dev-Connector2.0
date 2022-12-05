@@ -1,6 +1,7 @@
 const { validationResult } = require('express-validator')
 const request = require('request')
-const config = require('config')
+// const config = require('config')
+require('dotenv').config()
 
 const HttpError = require('../models/http-error')
 const Profile = require('../models/Profile')
@@ -94,7 +95,7 @@ const setProfile = async (req, res, next) => {
         return res.json({ profile: profile })
 
     } catch (error) {
-        console.log('here')
+        console.log(error)
         return next(new HttpError('Error while setting up profile'), 500)
     }
 }
@@ -268,10 +269,13 @@ const deleteEducation = async (req, res, next) => {
 const getGithubRepo = async (req, res, next) => {
     try {
         const options = {
-            uri: `https://api.github.com/users/${req.params.username}/repos?per_page=5&sort=created:asc&client_id=${config.get('githubClientId')}&client_secret=${config.get('githubSecret')}`,
+            // uri: `https://api.github.com/users/${req.params.username}/repos?per_page=5&sort=created:asc&client_id=${config.get('githubClientId')}&client_secret=${config.get('githubSecret')}`,
+            uri: `https://api.github.com/users/${req.params.username}/repos?per_page=5&sort=created:asc&client_id=${process.env.githubClientId}&client_secret=${process.env.githubSecret}`,
             method: 'GET',
             headers: { 'user-agent': 'node.js' }
         }
+
+        console.log(uri)
 
         request(options, (error, response, body) => {
             if (error) console.log(error)

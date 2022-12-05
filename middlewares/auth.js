@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken')
-const config = require('config')
+// const config = require('config')
+require('dotenv').config()
 
 const HttpError = require('../models/http-error')
 
@@ -20,7 +21,8 @@ module.exports = async (req, res, next) => {
 
     let decodedToken
     try {
-        decodedToken = jwt.verify(token, config.get('jwt_secret_key'))
+        // decodedToken = jwt.verify(token, config.get('jwt_secret_key'))
+        decodedToken = jwt.verify(token, process.env.jwtSecretKey)
         req.user = decodedToken.user
         next()
     } catch (error) {

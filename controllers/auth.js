@@ -1,7 +1,8 @@
 const bcrypt = require('bcryptjs')
-const config = require('config')
+// const config = require('config')
 const jwt = require('jsonwebtoken')
 const { validationResult } = require('express-validator')
+require('dotenv').config()
 
 const User = require('../models/User')
 const HttpError = require('../models/http-error')
@@ -38,9 +39,12 @@ const login = async (req, res, next) => {
                     }
                 }
 
+                console.log(process.env.jwtSecretKey)
+                
                 jwt.sign(
                     payload,
-                    config.get('jwt_secret_key'),
+                    // config.get('jwt_secret_key'),
+                    process.env.jwtSecretKey,
                     { expiresIn: '10h' },
                     (error, token) => {
                         if (error) {
@@ -57,6 +61,7 @@ const login = async (req, res, next) => {
             return res.status(400).json({msg: 'No user with provided email exists.'})
         }
     } catch (error) {
+        console.log(error)
         //return next(new HttpError('Server Error', 500))
         return res.status(500).json({msg: 'Server Error. Please try again'})
     }

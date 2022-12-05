@@ -1,8 +1,9 @@
 const gravatar = require('gravatar')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const config = require('config')
+// const config = require('config')
 const { validationResult } = require('express-validator')
+require('dotenv').config()
 
 const User = require('../models/User')
 const HttpError = require('../models/http-error')
@@ -57,7 +58,8 @@ const Signup = async (req, res, next) => {
 
     jwt.sign(
         payload, 
-        config.get('jwt_secret_key'), 
+        // config.get('jwt_secret_key'), 
+        process.env.jwtSecretKey,
         {expiresIn: '1h'}, 
         (error, token) => {
         if(error) {
