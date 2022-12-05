@@ -40,6 +40,7 @@ const PORT = process.env.PORT || 5000
 
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
+    console.log('We are in prod')
     // Set static folder
     app.use(express.static('client/build'));
 
